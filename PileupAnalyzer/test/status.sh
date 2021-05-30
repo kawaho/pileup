@@ -1,5 +1,0 @@
-crab getoutput -d crab_projects/crab_plots_PileupAnalyzer_EWKWminusv2
-crab getoutput -d crab_projects/crab_plots_PileupAnalyzer_EWKWplusv2
-crab getoutput -d crab_projects/crab_plots_PileupAnalyzer_EWKZllv2
-crab getoutput -d crab_projects/crab_plots_PileupAnalyzer_EWKZnunuv2
-crab getoutput -d crab_projects/crab_plots_PileupAnalyzer_GGHv2
