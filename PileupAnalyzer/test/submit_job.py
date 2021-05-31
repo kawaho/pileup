@@ -29,9 +29,11 @@ elif era=='2018':
 
 files = getFilesName(samples)
 
-with open('inputlist'+era+'.txt', 'w') as txt:
+itest = 'rm -rf /nfs_scratch/kaho/PU_'+era+'-runAnalyzer;mkdir -p /nfs_scratch/kaho/PU_'+era+'-runAnalyzer/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/dags/daginputs'
+run(itest, args.dryRun)
+with open('/nfs_scratch/kaho/PU_'+era+'-runAnalyzer/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/dags/daginputs/inputlist'+era+'.txt', 'w') as txt:
   txt.write('\n'.join(files))
 
-itest = 'farmoutAnalysisJobs PU_'+era+' --vsize-limit 8000 --memory-requirements=3000 --infer-cmssw-path runAnalyzer.py era='+era+' \'inputFiles=$inputFileNames\' \'outputFile=$outputFileNames\' --input-dir=/ --output-dir=. --assume-input-files-exist --input-file-list=./inputlist'+era+'.txt'
+itest = 'farmoutAnalysisJobs --vsize-limit 8000 --memory-requirements=3000 --infer-cmssw-path \"--submit-dir=/nfs_scratch/kaho/PU_'+era+'-runAnalyzer/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/submit\" \"--output-dag-file=/nfs_scratch/kaho/PU_'+era+'-runAnalyzer/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/dags/dag\" \"--output-dir=.\" --input-files-per-job=1 --job-count=1000000 --input-file-list=/nfs_scratch/kaho/PU_'+era+'-runAnalyzer/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/dags/daginputs/inputlist'+era+'.txt --assume-input-files-exist --input-dir=/ PU_'+era+'-runAnalyzer-DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8 runAnalyzer.py era='+era+' \'inputFiles=$inputFileNames\' --job-generates-output-name'
 
 run(itest, args.dryRun)

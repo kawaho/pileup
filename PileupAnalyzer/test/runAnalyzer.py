@@ -13,9 +13,9 @@ options.register ('era',
                   VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which era")
-options.parseArguments()
 
 options.outputFile = "Pileup.root"
+options.parseArguments()
 
 if options.era=="2018":
   GT = '106X_upgrade2018_realistic_v15_L1v1'
